@@ -11,4 +11,8 @@ def check_integer_average_points(list_of_tasks):
     else:
         return "Failed"
 
+def sort_list_of_tasks(list_of_tasks):
+    list_of_tasks.sort()
+    return list_of_tasks
+
 print(check_number_of_tasks([1,2,3]))
