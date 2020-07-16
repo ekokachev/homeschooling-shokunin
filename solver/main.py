@@ -41,25 +41,33 @@ def convert_list_of_tasks_to_paths(list_of_tasks):
     return D   
 
 
-def check_average_is_reachable(D, list_of_tasks): 
-    unique_elements = set(list_of_tasks)
-    queue = list_of_tasks
+def check_average_is_reachable(paths, list_of_tasks): 
+    #unique_elements = set(list_of_tasks)
+    queue = paths
     AVERAGE = sum(list_of_tasks) // 3 #floor (integer) division
-    print(AVERAGE)
+
+    index_in_queue = -1
     while True: 
-        next_in_line = queue.pop(0)
-        if next_in_line >= AVERAGE:
+        index_in_queue += 1
+        next_in_line = queue[index_in_queue]
+        
+        left_sum = next(iter(next_in_line)) # give the first key from a dict
+        left_path = next_in_line[left_sum]
+
+        if left_sum >= AVERAGE:
             break
 
-        for i in queue:
-            new_element = next_in_line + i
-            if new_element > AVERAGE:
+        for i in queue[index_in_queue+1:]:
+            right_sum = next(iter(i))
+            right_path = i[right_sum]
+            new_sum = left_sum + right_sum
+            if new_sum > AVERAGE:
                 break
-            if new_element not in unique_elements:
-                bisect.insort(queue, new_element)
-                unique_elements.add(new_element)         
+            if not bool(left_path & right_path): 
+                queue.append({new_sum: left_path.union(right_path)})
 
-    if AVERAGE in unique_elements: 
+
+    if AVERAGE in queue[index_in_queue]:
         return "OK"
     else:
         return "Failed"
