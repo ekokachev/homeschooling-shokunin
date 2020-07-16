@@ -2,6 +2,8 @@ import pytest
 
 from solver.main import *
 
+COMPLICATED_SET = [2,2,2,3,3,3,4,4,4,5,5,5,10,11,12]
+
 def test_min_3_tasks():
     assert check_number_of_tasks([1,1]) == "Failed"
 
@@ -23,3 +25,5 @@ def test_sort():
 def test_convert_list_to_dict():
     assert convert_list_to_dict([3,10,20]) == {3: [{0}], 10: [{1}], 20: [{2}]}
 
+def test_create_initial_paths():
+    assert convert_list_of_tasks_to_paths([3,10,20]) == [{3: {0}}, {10: {1}}, {20: {2}}]

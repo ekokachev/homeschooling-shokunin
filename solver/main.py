@@ -4,6 +4,9 @@ dict = { 10: [{}, {}, {}, {}],
          20: [{}]
 }
 
+paths = [{Sum of Points: set(list of tasks that give that value)}]
+
+
 """
 import bisect
 
@@ -30,6 +33,13 @@ def convert_list_to_dict(list_of_tasks):
         #print(i, list_of_tasks[i])
         D[list_of_tasks[i]] = [set([i])]
     return D
+
+def convert_list_of_tasks_to_paths(list_of_tasks):
+    D = []
+    for i in range(len(list_of_tasks)):
+        D.append({list_of_tasks[i]: {i}})
+    return D   
+
 
 def check_average_is_reachable(D, list_of_tasks): 
     unique_elements = set(list_of_tasks)
