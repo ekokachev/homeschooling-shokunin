@@ -38,7 +38,7 @@ Tasks are assigned as following:
 
 ## Testing
 ```bash
-$ pytest -v
+$ python -m pytest test
 ```
 
 ## Evidence of TDD

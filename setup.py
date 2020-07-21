@@ -7,6 +7,6 @@ setup(
    author='Eugene Kokachev',
    url='https://github.com/ekokachev/homeschooling-shokunin/',
    author_email='Send me a hug rather',
-   packages=find_packages("."),
+   packages=['solver',],
    install_requires=['pytest'], #external packages as dependencies
 )
