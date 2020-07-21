@@ -12,9 +12,9 @@ Create and activate a Python 3 Virtual Environment.
 $ virtualenv -p python3.7 virtual_environment
 $ source virtual_environment/bin/activate
 ```
-Install pytest
+Install pytest and package locally
 ```bash
-$ pip install -r requirements.txt 
+$ pip install -e .
 ```
 
 ## Running 
